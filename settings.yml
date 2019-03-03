@@ -1,0 +1,29 @@
+# https://developer.github.com/v3/repos/#edit
+
+repository:
+  has_issues: true
+  has_projects: false
+  has_wiki: false
+  has_downloads: false
+  allow_squash_merge: true
+  allow_merge_commit: false
+  allow_rebase_merge: false
+
+labels:
+  - name: confirmed
+    oldname: bug
+    color: c2e0c6
+  - name: accepted
+    oldname: enhancement
+    color: c2e0c6
+  - name: info
+    oldname: documentation
+    color: bfd4f2
+  - name: help wanted
+    oldname: help wanted
+    color: fbca04
+  - name: on hold
+    color: e99695
+  - name: stale
+    oldname: wontfix
+    color: cccccc
