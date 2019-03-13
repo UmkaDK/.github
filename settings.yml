@@ -1,4 +1,4 @@
-# https://developer.github.com/v3/repos/#edit
+# https://probot.github.io/apps/settings/
 
 repository:
   has_issues: true
@@ -10,20 +10,17 @@ repository:
   allow_rebase_merge: false
 
 labels:
-  - name: confirmed
-    oldname: bug
+  - name: bug
+    color: e99695
+  - name: enhancement
     color: c2e0c6
-  - name: accepted
-    oldname: enhancement
-    color: c2e0c6
-  - name: info
-    oldname: documentation
+  - name: documentation
     color: bfd4f2
   - name: help wanted
-    oldname: help wanted
     color: fbca04
   - name: on hold
-    color: e99695
+    color: cccccc
   - name: stale
-    oldname: wontfix
+    color: cccccc
+  - name: pinned
     color: cccccc
