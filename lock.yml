@@ -1,0 +1,29 @@
+# https://probot.github.io/apps/lock/
+
+daysUntilLock: 30
+skipCreatedBefore: false
+exemptLabels: []
+lockLabel: false
+
+# Comment to post before locking. Set to `false` to disable
+lockComment: >
+  This issue has been automatically **locked** because it has not seen any
+  activity since it was closed. 
+
+# Assign `resolved` as the reason for locking. Set to `false` to disable
+setLockReason: true
+
+# Limit to only `issues` or `pulls`
+# only: issues
+
+# Optionally, specify configuration settings just for `issues` or `pulls`
+# issues:
+#   exemptLabels:
+#     - help-wanted
+#   lockLabel: outdated
+
+# pulls:
+#   daysUntilLock: 30
+
+# Repository to extend settings from
+# _extends: repo

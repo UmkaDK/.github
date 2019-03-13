@@ -1,0 +1,18 @@
+# https://probot.github.io/apps/stale/
+
+daysUntilStale: 60
+daysUntilClose: 30
+exemptLabels:
+  - bug
+  - enhancement
+  - documentation
+  - help wanted
+  - on hold
+  - pinned
+staleLabel: stale
+markComment: >
+  This issue has been automatically marked as **stale** because it has not seen
+  any recent activity. It will be closed, if no comment is made soon.
+closeComment: >
+  This issue has been automatically **closed** because it has not seen any
+  activity since it was marked as stale. It can be reopenned if required.
