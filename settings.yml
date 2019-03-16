@@ -22,5 +22,3 @@ labels:
     color: cccccc
   - name: stale
     color: cccccc
-  - name: pinned
-    color: cccccc

@@ -8,11 +8,8 @@ exemptLabels:
   - documentation
   - help wanted
   - on hold
-  - pinned
 staleLabel: stale
 markComment: >
-  This issue has been automatically marked as **stale** because it has not seen
-  any recent activity. It will be closed, if no comment is made soon.
+  Automatically marked as **stale** because there hasn't been any recent activity.
 closeComment: >
-  This issue has been automatically **closed** because it has not seen any
-  activity since it was marked as stale. It can be reopenned if required.
+  Automatically **closed** because there hasn't been any activity since this was marked as stale.
