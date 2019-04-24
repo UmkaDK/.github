@@ -6,7 +6,7 @@ repository:
   has_wiki: false
   has_downloads: false
   allow_squash_merge: true
-  allow_merge_commit: true
+  allow_merge_commit: false
   allow_rebase_merge: false
 
 labels:
