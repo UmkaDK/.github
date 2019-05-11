@@ -12,10 +12,10 @@ repository:
 labels:
   - name: bug
     color: e99695
-  - name: enhancement
-    color: c2e0c6
   - name: documentation
     color: bfd4f2
+  - name: feature
+    color: c2e0c6
   - name: help wanted
     color: fbca04
   - name: on hold
