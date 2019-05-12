@@ -25,7 +25,7 @@ labels:
     color: fbca04
   - name: on hold
     description:
-    color: e99695
+    color: cccccc
   - name: stale
     description:
-    color: cccccc
+    color: 000000
