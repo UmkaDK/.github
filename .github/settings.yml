@@ -14,6 +14,7 @@ labels:
     color: e99695
   - name: documentation
     color: bfd4f2
+    oldname: question
   - name: enhancement
     color: c2e0c6
   - name: help wanted

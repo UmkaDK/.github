@@ -5,7 +5,7 @@ daysUntilClose: 30
 exemptLabels:
   - bug
   - documentation
-  - feature
+  - enhancement
   - help wanted
   - on hold
 staleLabel: stale
