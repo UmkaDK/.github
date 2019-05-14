@@ -10,9 +10,10 @@ repository:
   allow_rebase_merge: false
 
 labels:
-  - name: bug
+  - name: concern
     description:
     color: e99695
+    oldname: bug
   - name: documentation
     description:
     color: bfd4f2
