@@ -2,12 +2,12 @@
 
 name-template: $PREVIOUS_TAG
 tag-template: $PREVIOUS_TAG
-change-template: - $TITLE by @$AUTHOR (#$NUMBER)
+change-template: - $TITLE (#$NUMBER)
 categories:
   - title: New Features
-    label: feature
-  - title: Bug Fixes
-    label: bug
+    label: enhancement
+  - title: Resolved Concerns
+    label: concern
 template: |
   ## Changes
 
