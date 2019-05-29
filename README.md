@@ -1,6 +1,6 @@
 # .github
 
-Personal github configurations and settings For the following plugins:
+Personal github configurations:
 
 - [Settings](https://probot.github.io/apps/settings)
 - [Stale](https://probot.github.io/apps/stale)
