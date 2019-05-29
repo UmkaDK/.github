@@ -10,6 +10,6 @@ exemptLabels:
   - on hold
 staleLabel: stale
 markComment: >
-  Automatically marked as **stale** because there hasn't been any recent activity. It will be closed if no further activity occurs.
+  Automatically marked as **stale** because there hasn't been any recent activity. This discussion will be closed if no further activity occurs.
 closeComment: >
-  Automatically **closed** because there hasn't been any activity since this this was marked as stale.
+  Automatically **closed** because there hasn't been any activity since this discussion was marked as stale.
