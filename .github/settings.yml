@@ -11,15 +11,14 @@ repository:
   allow_rebase_merge: true
 
 labels:
-  - name: concern
+  - name: defect
     description:
     color: e99695
     oldname: bug
-  - name: documentation
+  - name: question
     description:
     color: bfd4f2
-    oldname: question
-  - name: enhancement
+  - name: feature 
     description:
     color: c2e0c6
   - name: help wanted

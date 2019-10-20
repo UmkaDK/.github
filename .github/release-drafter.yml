@@ -4,10 +4,10 @@ name-template: $PREVIOUS_TAG
 tag-template: $PREVIOUS_TAG
 change-template: $TITLE (#$NUMBER)
 categories:
-  - title: New Features
-    label: enhancement
-  - title: Resolved Concerns
-    label: concern
+  - title: Fixed bugs & defects
+    label: defect
+  - title: New features & improvements 
+    label: feature
 template: |
   ## Changes
 
