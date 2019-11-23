@@ -3,7 +3,7 @@
 daysUntilStale: 60
 daysUntilClose: 30
 exemptLabels:
-  - defect
+  - bug
   - question
   - feature
   - help wanted
