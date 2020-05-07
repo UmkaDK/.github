@@ -1,12 +1,11 @@
 name: CI pipeline
 
-on: []
-# on:
-#   push:
-#     branches: [master]
-#   pull_request:
-#   release:
-#     types: [published]
+on:
+  push:
+    branches: [master]
+  pull_request:
+  release:
+    types: [published]
 
 defaults:
   run:
