@@ -40,5 +40,5 @@ branches:
         contexts: ['build', 'codecov/patch', 'codecov/project']
       required_linear_history: true
       enforce_admins: true
-      # allow_force_pushes: true
-      # allow_deletions: false
+      allow_force_pushes: true
+      allow_deletions: false
