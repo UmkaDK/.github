@@ -31,14 +31,14 @@ labels:
     description: Used exclusively by the stale and lock bots
     color: 000000
 
-# branches:
-#   - name: master
-#     protection:
-#       required_pull_request_reviews: null
-#       required_status_checks:
-#         strict: true
-#         contexts: ['build', 'codecov/patch', 'codecov/project']
-#       required_linear_history: true
-#       enforce_admins: true
-#       allow_force_pushes: true
-#       allow_deletions: false
+branches:
+  - name: master
+    protection:
+      required_pull_request_reviews: null
+      required_status_checks:
+        strict: true
+        contexts: ['build', 'codecov/patch', 'codecov/project']
+      required_linear_history: true
+      enforce_admins: true
+      allow_force_pushes: true
+      allow_deletions: false
