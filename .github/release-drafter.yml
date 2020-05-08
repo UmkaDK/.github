@@ -1,15 +1,16 @@
 # https://probot.github.io/apps/release-drafter/
 
-_extends: .github
+name-template: $MAJOR.$MINOR.$PATCH
+tag-template:  $MAJOR.$MINOR.$PATCH
+change-template: - [#$NUMBER] $TITLE (@$AUTHOR)
+no-changes-template: - No changes
 
-name-template:
-tag-template:
-change-template: $TITLE (#$NUMBER)
 categories:
   - title: New features
     label: feature
   - title: Fixed bugs
     label: bug
+
 template: |
   ## Changes
 
@@ -18,3 +19,9 @@ template: |
   ## Contributors
 
   $CONTRIBUTORS
+
+sort-by: merged_at
+sort-direction: descending
+replacers:
+  - search: '/^\s*#+\s/'
+    replace: ''

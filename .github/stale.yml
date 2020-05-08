@@ -1,7 +1,5 @@
 # https://probot.github.io/apps/stale/
 
-_extends: .github
-
 daysUntilStale: 60
 daysUntilClose: 30
 exemptLabels:
