@@ -1,5 +1,7 @@
 # https://probot.github.io/apps/release-drafter/
 
+_extends: .github
+
 name-template:
 tag-template:
 change-template: $TITLE (#$NUMBER)
