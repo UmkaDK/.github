@@ -1,6 +1,5 @@
 # https://probot.github.io/apps/lock/
 
-#_extends: repo
 daysUntilLock: 30
 skipCreatedBefore: false
 exemptLabels: []
