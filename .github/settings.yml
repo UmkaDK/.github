@@ -26,7 +26,7 @@ labels:
     color: fbca04
   - name: on hold
     description: Something is holding up further progress...
-    color: cccccc
+    color: fbca04
   - name: stale
     description: Used exclusively by the stale and lock bots
     color: cccccc
