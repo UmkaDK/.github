@@ -2,7 +2,7 @@
 
 repository:
   has_issues: true
-  has_projects: false
+  has_projects: true
   has_wiki: false
   has_downloads: false
   default_branch: master
@@ -25,11 +25,11 @@ labels:
     description: Could you please help me with any of these?
     color: fbca04
   - name: on hold
-    description: I know this is here, but I'm not working on it
+    description: Something is holding up further progress...
     color: cccccc
   - name: stale
     description: Used exclusively by the stale and lock bots
-    color: 000000
+    color: cccccc
 
 branches:
   - name: master

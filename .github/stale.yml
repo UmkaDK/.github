@@ -3,9 +3,6 @@
 daysUntilStale: 60
 daysUntilClose: 30
 exemptLabels:
-  - bug
-  - question
-  - feature
   - help wanted
   - on hold
 staleLabel: stale
