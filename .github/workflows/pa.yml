@@ -1,0 +1,23 @@
+name: Projects automation
+
+on:
+  pull_request:
+    types: [opened]
+  issues:
+    types: [opened, transferred]
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  schedule:
+    if: contains('opened transferred', github.event.action)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Add new items to Work Schedule
+        uses: alex-page/github-project-automation-plus@master
+        with:
+          project: Scheduled Work
+          column: Backlog
+          repo-token: ${{ secrets.PA_TOKEN }}
