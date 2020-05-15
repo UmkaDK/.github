@@ -1,6 +1,6 @@
 <div align="center">
 
-  [![.github logo](https://raw.githubusercontent.com/UrsaDK/.github/master/docs/images/logo.jpg)](#)<br>
+  [![.github logo](https://avatars.githubusercontent.com/u/2833247?s=160)](#)<br>
 
   [![stable branch](https://img.shields.io/badge/dynamic/json.svg?color=lightgrey&label=stable&query=%24.default_branch&url=https%3A%2F%2Fapi.github.com%2Frepos%2FUrsaDK%2F.github&logo=github)](https://github.com/UrsaDK/.github/tree/master)
   [![latest release](https://img.shields.io/badge/dynamic/json.svg?color=blue&label=release&query=%24.name&url=https%3A%2F%2Fapi.github.com%2Frepos%2FUrsaDK%2F.github%2Freleases%2Flatest&logo=docker)](https://hub.docker.com/r/ursadk/.github)
