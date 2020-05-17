@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+#
+# A script to remove Project Environment artefacts from a Github project.
+#
+# This script can be used to remove all "environment" artefacts from a project
+# that, for example, no longer uses github-pages. Deleting all environment
+# artefacts will also remove the "environment" tab from the Github repository.
+#
+# Requires: hub, jq
+
+if [[ "${2}" == *'/'* ]]; then
+  OWNER="${2%/*}"
+  REPO="${2##*/}"
+elif [[ -n "${2}" ]]; then
+  REPO="${2}"
+fi
+
+GITHUB_API="https://api.github.com/repos/${OWNER:-{owner}}/${REPO:-{repo}}"
+
+for id in $(hub api ${GITHUB_API}/deployments | jq -r '.[].id'); do
+  echo
+  echo "Deployment ID: ${id}"
+
+  echo -n "  - updating state: "
+  hub api -X POST -F state=inactive ${GITHUB_API}/deployments/${id}/statuses \
+    | jq -r '.state'
+
+  echo -n "  - deleting artefact: "
+  hub api -X DELETE ${GITHUB_API}/deployments/${id} \
+    && echo "deleted"
+done
