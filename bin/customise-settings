@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+#
+# A script to customise repository settings.
+#
+# Requires: hub, jq
+
+if [[ "${2}" == *'/'* ]]; then
+  OWNER="${2%/*}"
+  REPO="${2##*/}"
+elif [[ -n "${2}" ]]; then
+  REPO="${2}"
+fi
+
+GITHUB_API="https://api.github.com/repos/${OWNER:-{owner}}/${REPO:-{repo}}"
+IFS=$'\n'
+
+echo -n "Customising repository settings ... "
+hub api -X PATCH \
+  -F has_wiki=false \
+  -F has_projects=false \
+  -F delete_branch_on_merge=true \
+  ${GITHUB_API} > /dev/null && echo 'ok'
+
+branch="$(hub api ${GITHUB_API} | jq -r '.default_branch')"
+
+echo -n "Customising branch protection ... "
+hub api -X PUT --input - \
+  ${GITHUB_API}/branches/${branch}/protection \
+  > /dev/null <<END_OF_JSON && echo 'ok'
+{
+  "required_pull_request_reviews": null,
+  "required_status_checks": {
+    "strict": true,
+    "contexts": []
+  },
+  "restrictions": null,
+  "required_linear_history": true,
+  "enforce_admins": true,
+  "allow_force_pushes": true
+}
+END_OF_JSON
