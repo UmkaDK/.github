@@ -1,0 +1,66 @@
+#!/usr/bin/env bash
+#
+# A script to copy labels from the owner's .github repository.
+#
+# This script will:
+#   - update labels that also exist in .github repo
+#   - delete all labels that don't existing .github repo
+#   - add labels from .github repo that don't exist locally
+#
+# Requires: hub, jq
+
+if [[ "${2}" == *'/'* ]]; then
+  OWNER="${2%/*}"
+  REPO="${2##*/}"
+elif [[ -n "${2}" ]]; then
+  REPO="${2}"
+fi
+
+GITHUB_API="https://api.github.com/repos/${OWNER:-{owner}}/${REPO:-{repo}}"
+IFS=$'\n'
+
+SOURCE_LABELS="$(hub api ${GITHUB_API%/*}/.github/labels)"
+TARGET_LABELS="$(hub api ${GITHUB_API}/labels)"
+DELETE_LABELS=()
+
+# Update labels
+for label in $(echo "${TARGET_LABELS}" | jq -r '.[].name'); do
+  json="$(echo ${SOURCE_LABELS} \
+    | jq ".[] | select(.name == \"${label}\")
+      | { new_name: .name, description: .description, color: .color }")"
+  if [[ -n "${json}" ]]; then
+    echo "Updating \"${label}\""
+    echo "${json}" \
+      | hub api -X PATCH --input - "${GITHUB_API}/labels/${label}" > /dev/null
+  else
+    DELETE_LABELS+=("${label}")
+  fi
+done
+
+# Add new labels
+for json in $(echo "${SOURCE_LABELS}" | jq -cr '.[]
+    | { name: .name, description: .description, color: .color }'); do
+  label="$(echo "${json}" | jq -r '.name')"
+  target="$(echo ${TARGET_LABELS} \
+    | jq ".[] | select(.name == \"${label}\")")"
+  if [[ -z "${target}" ]]; then
+    echo "Adding \"${label}\""
+    echo "${json}" \
+      | hub api -X POST --input - "${GITHUB_API}/labels" > /dev/null
+  fi
+done
+
+# Check if user wants to delete labels
+if [[ -n "${DELETE_LABELS[*]}" ]]; then
+  echo "The following labels are about to be delete:"
+  printf '  - %s\n' "${DELETE_LABELS[@]}"
+  read -n 1 -p "Proceed? (y/N): " && echo
+
+  # Delete existing labels
+  if [[ "${REPLY}" == 'y' || "${REPLY}" == 'Y' ]]; then
+    for label in ${DELETE_LABELS}; do
+      echo "Deleting \"${label}\""
+      hub api -X DELETE "${GITHUB_API}/labels/${label}"
+    done
+  fi
+fi
