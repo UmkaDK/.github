@@ -19,13 +19,13 @@ fi
 GITHUB_API="https://api.github.com/repos/${OWNER:-{owner}}/${REPO:-{repo}}"
 IFS=$'\n'
 
-SOURCE_LABELS="$(hub api ${GITHUB_API%/*}/.github/labels)"
-TARGET_LABELS="$(hub api ${GITHUB_API}/labels)"
+SOURCE_LABELS="$(hub api "${GITHUB_API%/*}/.github/labels")"
+TARGET_LABELS="$(hub api "${GITHUB_API}/labels")"
 DELETE_LABELS=()
 
 # Update labels
 for label in $(echo "${TARGET_LABELS}" | jq -r '.[].name'); do
-  json="$(echo ${SOURCE_LABELS} \
+  json="$(echo "${SOURCE_LABELS}" \
     | jq ".[] | select(.name == \"${label}\")
       | { new_name: .name, description: .description, color: .color }")"
   if [[ -n "${json}" ]]; then
@@ -41,7 +41,7 @@ done
 for json in $(echo "${SOURCE_LABELS}" | jq -cr '.[]
     | { name: .name, description: .description, color: .color }'); do
   label="$(echo "${json}" | jq -r '.name')"
-  target="$(echo ${TARGET_LABELS} \
+  target="$(echo "${TARGET_LABELS}" \
     | jq ".[] | select(.name == \"${label}\")")"
   if [[ -z "${target}" ]]; then
     echo "Adding \"${label}\""
@@ -54,11 +54,11 @@ done
 if [[ -n "${DELETE_LABELS[*]}" ]]; then
   echo "The following labels are about to be delete:"
   printf '  - %s\n' "${DELETE_LABELS[@]}"
-  read -n 1 -p "Proceed? (y/N): " && echo
+  read -r -n 1 -p "Proceed? (y/N): " && echo
 
   # Delete existing labels
   if [[ "${REPLY}" == 'y' || "${REPLY}" == 'Y' ]]; then
-    for label in ${DELETE_LABELS}; do
+    for label in "${DELETE_LABELS[@]}"; do
       echo "Deleting \"${label}\""
       hub api -X DELETE "${GITHUB_API}/labels/${label}"
     done
