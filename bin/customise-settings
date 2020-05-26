@@ -19,14 +19,14 @@ hub api -X PATCH \
   -F has_wiki=false \
   -F has_projects=false \
   -F delete_branch_on_merge=true \
-  "${GITHUB_API}" > /dev/null && echo 'ok'
+  "${GITHUB_API}" > /dev/null && echo 'ok' || echo 'ERROR'
 
 branch="$(hub api "${GITHUB_API}" | jq -r '.default_branch')"
 
 echo -n "Customising branch protection ... "
 hub api -X PUT --input - \
   "${GITHUB_API}/branches/${branch}/protection" \
-  > /dev/null <<END_OF_JSON && echo 'ok'
+  > /dev/null <<END_OF_JSON && echo 'ok' || echo 'ERROR'
 {
   "required_pull_request_reviews": null,
   "required_status_checks": {
